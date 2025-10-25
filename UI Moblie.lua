@@ -2,28 +2,33 @@ local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local UserInputService = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
+local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 
 local toggleGui = Instance.new("ScreenGui")
 toggleGui.Name = "ToggleUI"
-toggleGui.Parent = CoreGui  -- << เปลี่ยนจาก PlayerGui เป็น CoreGui
+toggleGui.Parent = CoreGui
 
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 60, 0, 20)
-toggleButton.Position = UDim2.new(0, 930, 0, 8)
+toggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
+toggleButton.Position = UDim2.new(0.5, 0, 0.5, 0)
 toggleButton.Text = "Open UI"
 toggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 toggleButton.Parent = toggleGui
 toggleButton.AutoButtonColor = false
 
+-- สถานะเปิด/ปิด UI
 local isOpen = false
 
+-- ฟังก์ชันกด Ctrl ขวา
 local function pressCtrlRight()
     VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.RightControl, false, game)
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.RightControl, false, game)
 end
 
+-- เมื่อกดปุ่ม
 toggleButton.MouseButton1Click:Connect(function()
     isOpen = not isOpen
     if isOpen then
@@ -52,7 +57,7 @@ toggleButton.InputEnded:Connect(function(input)
     end
 end)
 
-game:GetService("RunService").RenderStepped:Connect(function()
+RunService.RenderStepped:Connect(function()
     if dragging then
         local mousePos = UserInputService:GetMouseLocation()
         toggleButton.Position = UDim2.new(
