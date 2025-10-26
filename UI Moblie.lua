@@ -22,8 +22,8 @@ toggleButton.AutoButtonColor = false
 local isOpen = false
 
 local function pressCtrlRight()
-    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.RightControl, false, game)
-    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.RightControl, false, game)
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.LeftControl, false, game)
 end
 
 local dragging = false
