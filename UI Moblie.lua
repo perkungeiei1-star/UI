@@ -12,7 +12,7 @@ toggleGui.Parent = CoreGui
 
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 60, 0, 20)
-toggleButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+toggleButton.Position = UDim2.new(0, 0, 0.5, -10)
 toggleButton.Text = "Open UI"
 toggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
